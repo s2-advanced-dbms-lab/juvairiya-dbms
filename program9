@@ -1,0 +1,164 @@
+1) SQL> begin
+  2  dbms_output.put_line('Hello guys!');
+  3  end;
+  4  /
+Hello guys!
+
+PL/SQL procedure successfully completed.
+
+2) SQL> Declare
+  2  a integer;
+  3  b integer;
+  4  c integer;
+  5  begin
+  6  a:=10;
+  7  b:=20;
+  8  c:=a+b;
+  9  dbms_output.put_line('Sum of 2 numbers');
+ 10  dbms_output.put_line(c);
+ 11  end;
+ 12  /
+Sum of 2 numbers
+30
+
+PL/SQL procedure successfully completed.
+
+3) SQL> begin
+  2  for no in 1..5 loop
+  3  dbms_output.put_line('Iteration:'||no);
+  4  end loop;
+  5  end;
+  6  /
+Iteration:1
+Iteration:2
+Iteration:3
+Iteration:4
+Iteration:5
+
+PL/SQL procedure successfully completed.
+
+4) SQL> declare
+  2  a number:=10;
+  3  b number:=12;
+  4  c number:=5;
+  5  begin
+  6   dbms_output.put_line('a='||a||',b='||b||',c='||c);
+  7  if a>b AND a>c
+  8  then
+  9   dbms_output.put_line('a is greatest');
+ 10  else
+ 11  if b>a AND b>c
+ 12  then
+ 13   dbms_output.put_line('b is greatest');
+ 14  else
+ 15   dbms_output.put_line('c is greatest');
+ 16  end if;
+ 17  end if;
+ 18  end;
+ 19  /
+a=10,b=12,c=5
+b is greatest
+
+PL/SQL procedure successfully completed.
+
+5) SQL> declare
+  2  n number:=8;
+  3  begin
+  4  if mod(n,2)=0
+  5  then
+  6  dbms_output.put_line('number is even');
+  7  else
+  8   dbms_output.put_line('number is odd');
+  9  end if;
+ 10  end;
+ 11  /
+number is even
+
+PL/SQL procedure successfully completed.
+
+6) SQL> create or replace function area(n1 in number,n2 in number)
+  2  return number
+  3  is
+  4  n3 number(8);
+  5  begin
+  6  n3:=n1*n2;
+  7  return n3;
+  8  end;
+  9  /
+
+Function created.
+
+SQL> declare
+  2  n3 number(2);
+  3  begin
+  4  n3:=area(2,3);
+  5   dbms_output.put_line('Area of rectangle is :'||n3);
+  6  end;
+  7  /
+Area of rectangle is :6
+
+PL/SQL procedure successfully completed.
+
+
+
+7) SQL> create or replace function adder(n1 in number,n2 in number)
+  2  return number
+  3  is
+  4  n3 number(8);
+  5  begin
+  6  n3:=n1+n2;
+  7  return n3;
+  8  end;
+  9  /
+
+Function created.
+
+SQL> declare
+  2  n3 number(2);
+  3  begin
+  4  n3:=adder(11,22);
+  5   dbms_output.put_line('Addition is:'||n3);
+  6  end;
+  7  /
+Addition is:33
+
+PL/SQL procedure successfully completed.
+
+8) SQL> declare
+  2  a number;
+  3  b number;
+  4  c number;
+  5  PROCEDURE findMin(x IN number,y IN number,z OUT number)IS
+  6  BEGIN
+  7  IF x<y THEN
+  8  z:=x;
+  9  ELSE
+ 10  z:=y;
+ 11  END IF;
+ 12  END;
+ 13  BEGIN
+ 14  a:=23;
+ 15  b:=45;
+ 16  findMin(a,b,c);
+ 17   dbms_output.put_line('Minimum of(23,25):'||c);
+ 18  END;
+ 19  /
+Minimum of(23,25):23
+
+PL/SQL procedure successfully completed.
+
+9) SQL> DECLARE
+  2  a number;
+  3  PROCEDURE squareNum(x IN OUT number)IS
+  4  BEGIN
+  5  x:=x*x;
+  6  END;
+  7  BEGIN
+  8  a:=23;
+  9  squareNum(a);
+ 10   dbms_output.put_line('Square of(23):'||a);
+ 11  END;
+ 12  /
+Square of(23):529
+
+PL/SQL procedure successfully completed
